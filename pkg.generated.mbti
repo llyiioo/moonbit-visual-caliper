@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "PaiGack/moonbit-visual-caliper"
+package "llyiioo/moonbit-visual-caliper"
 
 import {
   "moonbitlang/core/debug",

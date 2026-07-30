@@ -9,13 +9,13 @@
 //   "moonbitlang/x@0.4.6",
 // }
 
-name = "PaiGack/moonbit-visual-caliper"
+name = "llyiioo/moonbit-visual-caliper"
 
 version = "0.1.0"
 
 readme = "README.mbt.md"
 
-repository = "https://github.com/PaiGack/moonbit-visual-caliper"
+repository = "https://github.com/llyiioo/moonbit-visual-caliper"
 
 license = "Apache-2.0"
 

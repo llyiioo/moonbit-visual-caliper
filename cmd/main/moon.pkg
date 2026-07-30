@@ -1,5 +1,5 @@
 import {
-  "PaiGack/moonbit-visual-caliper" @caliper,
+  "llyiioo/moonbit-visual-caliper" @caliper,
 }
 
 pkgtype(kind: "executable")

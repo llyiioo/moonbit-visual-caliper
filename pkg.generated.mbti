@@ -1,0 +1,119 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "PaiGack/moonbit-visual-caliper"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn analyze_gap(String, Double, Double, Tolerance) -> Measurement
+
+pub fn calibration_from_reference(Double, Double) -> Double
+
+pub fn detect_circle_from_points(Array[Point]) -> Circle
+
+pub fn detect_dominant_line(Array[EdgePoint]) -> Line
+
+pub fn distance(Point, Point) -> Double
+
+pub fn edge_profile(GrayImage, Point, Point, steps? : Int) -> Array[ProfileSample]
+
+pub fn fit_line(Array[Point]) -> Line
+
+pub fn gauge_width(GrayImage, Point, Point, threshold? : Double) -> Double
+
+pub fn make_demo_part() -> GrayImage
+
+pub fn render_markdown_report(MeasurementReport) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct Circle {
+  center : Point
+  radius : Double
+  rms_error : Double
+} derive(@debug.Debug)
+
+pub(all) enum EdgeMode {
+  Rising
+  Falling
+  Both
+} derive(Eq, @debug.Debug)
+
+pub(all) struct EdgePoint {
+  point : Point
+  strength : Double
+  polarity : Int
+} derive(@debug.Debug)
+
+pub(all) struct GrayImage {
+  width : Int
+  height : Int
+  pixels : Array[Double]
+} derive(@debug.Debug)
+pub fn GrayImage::GrayImage(width~ : Int, height~ : Int, fill? : Double) -> Self
+pub fn GrayImage::at(Self, Int, Int) -> Double
+pub fn GrayImage::from_rows(Array[Array[Double]]) -> Self
+pub fn GrayImage::inside(Self, Int, Int) -> Bool
+pub fn GrayImage::sample_bilinear(Self, Point) -> Double
+pub fn GrayImage::set(Self, Int, Int, Double) -> Unit
+pub fn GrayImage::sobel_magnitude(Self, Int, Int) -> Double
+pub fn GrayImage::threshold_edges(Self, Double) -> Array[EdgePoint]
+
+pub(all) struct Line {
+  a : Double
+  b : Double
+  c : Double
+} derive(@debug.Debug)
+pub fn Line::Line(a~ : Double, b~ : Double, c~ : Double) -> Self
+pub fn Line::distance_to(Self, Point) -> Double
+pub fn Line::offset(Self, Double) -> Self
+
+pub(all) struct Measurement {
+  name : String
+  value : Double
+  unit : String
+  decision : MeasurementDecision
+  deviation : Double
+} derive(@debug.Debug)
+
+pub(all) enum MeasurementDecision {
+  Pass
+  Warn
+  Fail
+} derive(Eq, @debug.Debug)
+
+pub(all) struct MeasurementReport {
+  part_id : String
+  measurements : Array[Measurement]
+  notes : Array[String]
+} derive(@debug.Debug)
+
+pub(all) struct Point {
+  x : Double
+  y : Double
+} derive(@debug.Debug)
+pub fn Point::Point(x~ : Double, y~ : Double) -> Self
+pub fn Point::scale(Self, Double) -> Self
+
+pub(all) struct ProfileSample {
+  point : Point
+  value : Double
+  gradient : Double
+} derive(@debug.Debug)
+pub fn ProfileSample::detect_edges(Array[Self], Double, mode? : EdgeMode) -> Array[EdgePoint]
+
+pub(all) struct Tolerance {
+  nominal : Double
+  lower : Double
+  upper : Double
+  unit : String
+} derive(@debug.Debug)
+pub fn Tolerance::Tolerance(nominal~ : Double, lower~ : Double, upper~ : Double, unit? : String) -> Self
+pub fn Tolerance::judge(Self, Double) -> MeasurementDecision
+
+// Type aliases
+
+// Traits
+
